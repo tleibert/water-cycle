@@ -1,0 +1,17 @@
+world:
+  ocean:
+    fraction: 96.5
+    to:
+    - location: atmosphere
+      via: rain
+  atmosphere:
+    fraction: 9.0e-06
+    to:
+    - location: ocean
+      via: precipitation
+    - location: land
+      via: precipitation
+  land:
+    fraction: 0.0003
+    to:
+      - location: rivers, lek
