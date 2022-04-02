@@ -1,0 +1,75 @@
+world:
+  locations:
+    - name: Atmosphere over ocean
+      amount: 10
+      variance: 20
+      description: |
+        The Earth's atmosphere covers the entire globe. Water is present in it
+        as water vapor, which can condense to form clouds, some of which emit
+        rain or become thunderstorms. The water in the Earth's atmosphere
+        primarily comes from the evaporation of ocean water, and it mostly
+        falls back to the ocean as rain.
+    - name: Surface ocean
+      amount: 130000
+      variance: 30
+      description: |
+        The oceans are the Earth's largest reservoir of water. Oceans cover
+        71% of the Earth's surface and contain 96.5% of Earth's water.
+        The ocean functions as an important carbon sink and currents in
+        the ocean help to regulate the temperature on the Earth's surface.
+        The ocean's surface is considered separate from the lower levels as it
+        is directly fed by land surface water flows and rain, and it can directly 
+        evaporate into the atmosphere. The ocean's surface is generally warmer,
+        more well-lit, and saltier than deeper waters.
+    - name: Deep ocean
+      amount: 1200000.0
+      variance: 8.0
+      description: |
+        The oceans are the Earth's largest reservoir of water. Oceans cover
+        71% of the Earth's surface and contain 96.5% of Earth's water.
+        The ocean functions as an important carbon sink and currents in
+        the ocean help to regulate the temperature on the Earth's surface.
+        The deep ocean is generally colder, darker, and less salty than
+        surface waters. Because of the salinity and temperature gradient, 
+        surface and deep waters don't mix very much relative to the amount
+        of water present in both regions.
+
+  fluxes:
+    - name: Ocean evaporation
+      amount: 420.0
+      variance: 20.0
+      source: Surface ocean
+      destination: Atmosphere over ocean
+      description: |
+        Oceanic evaporation occurs when water changes phase from liquid to
+        water vapor at the ocean's surface. This change is primarily driven
+        by thermal energy delivered to the ocean's surface by the sun. Ocean
+        evaporation is the primary influx of water into the Earth's atmosphere,
+        and is a big factor in coastal weather patterns.
+    - name: Ocean precipitation
+      amount: 380.0
+      variance: 20.0
+      source: Atmosphere over ocean
+      destination: Surface ocean
+      description: |
+        Most of the precipitation that falls on Earth falls over the ocean.
+        Ocean precipitation accounts for over three quarters of all precipitation
+        on earth.
+      # TODO write more
+    - name: Vertical ocean circulation
+      amount: 2100.0
+      variance: 30.0
+      source: Surface ocean
+      destination: Deep ocean
+      description: |
+        The flow of water from the ocean's surface to its deeper reaches is called
+        vertical ocean circulation.
+      # TODO write more
+    - name: Vertical ocean circulation
+      amount: 2100.0
+      variance: 30.0
+      source: Deep ocean
+      destination: Surface ocean
+      description: |
+        The flow of water from the ocean's surface to its deeper reaches is called
+        vertical ocean circulation.

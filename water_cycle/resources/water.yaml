@@ -1,0 +1,28 @@
+water:
+  salt:
+    ocean:
+      share: 96.5
+    other:
+      share: 0.9
+  fresh:
+    share: 2.5
+    glaciers:
+      share: 68.7
+    groundwater:
+      share: 30.1
+    surface:
+      share: 1.2
+      ground_ice:
+        share: 69.0
+      lakes:
+        share: 20.9
+      soil_moisture:
+        share: 3.8
+      swamps:
+        share: 2.6
+      atmosphere:
+        share: 3.0
+      living_things:
+        share: 0.26
+      rivers:
+        share: 0.49

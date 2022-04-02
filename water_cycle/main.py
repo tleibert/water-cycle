@@ -1,27 +1,34 @@
-import os
-import random
+"""
+Main file of the Water cycle simulation.
+"""
 
-import yaml
+from water_cycle.model import World
 
 
-def main():
-    print(os.getcwd())
-    with open("water_cycle/resources/story.yaml") as fh:
-        gamerules = yaml.safe_load(fh)
+def run_game(starting_location, world: World):
+    """
+    Runs the game's main loop
+    """
 
-    print(gamerules)
-
-    print("Welcome to the Water Cycle!")
-
-    starting_location = random.choice(list(gamerules["world"].keys()))
     current_location = starting_location
-
     while True:
         print(f"You are in {current_location}")
         user_input = input("What do you want to do?\n")
         if user_input is None or user_input.lower().startswith("q"):
-            print("Goodbye!")
-            break
+            return
+
+
+def main():
+    """
+    Starts the program
+    """
+    world = World.from_config("water_cycle/resources/world.yaml")
+    print("Welcome to the Water Cycle!")
+    print(world)
+    start = world.random_location()
+    print(f"You are starting in: {start.name}")
+    input()
+    print("Goodbye!")
 
 
 if __name__ == "__main__":
