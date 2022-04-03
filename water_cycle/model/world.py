@@ -44,8 +44,10 @@ class World:
 
             for source_str in sources:
                 for destination_str in destinations:
-                    # no flows should go from a place to itself
-                    if source_str == destination_str:
+                    # no flows should go from a place to itself, unless overridden
+                    if source_str == destination_str and not flux_src.get(
+                        "self_reference"
+                    ):
                         continue
 
                     source = locations[source_str]

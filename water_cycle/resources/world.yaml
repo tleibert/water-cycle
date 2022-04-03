@@ -192,3 +192,141 @@ world:
         Denser water will sink, while less dense water will rise. Vertical ocean circulation
         is part of the global system of thermohaline circulation - sometimes called the ocean
         conveyor belt.
+    - name: Ocean to land atmospheric flux
+      amount: 46.0
+      variance: 20.0
+      sources:
+        - Atmosphere over ocean
+      destinations:
+        - Atmosphere over land
+      description: |
+        Atmospheric water moving over the land from over the ocean is the primary source
+        for all precipitation over land, worldwide. Tall mountain ranges can inhibit this 
+        movement, creating areas with very low moisture, like the Atacama desert in South
+        America.
+    - name: Land ice discharge
+      amount: 3.1
+      variance: 40.0
+      sources:
+        - Ice sheets and glaciers
+      destinations:
+        - Surface ocean
+      description: |
+        As ice sheets and glaciers melt, they mostly release water into the ocean. This
+        is speculated to be one of the leading factors in sea level rise. Melting ice sheets
+        increase the amount of solar energy absorbed by the Earth, instead of reflected.
+        The influx of cold freshwater into the ocean also has an effect on ocean currents.
+    - name: Interbasin ocean circulation
+      amount: 5000.0
+      variance: 20.0
+      sources:
+        - Surface ocean
+      destinations:
+        - Surface ocean
+      self_reference: true
+      description: |
+        Interbasin ocean circulation is another component of the ocean's currents. In particular,
+        the term describes the movement of water between ocean basins, which people commonly
+        call "seas" or "oceans."
+    - name: River discharge to ocean
+      amount: 46.0
+      variance: 10.0
+      sources:
+        - Rivers
+      destinations:
+        - Surface ocean
+      description: |
+        Most rivers terminate at the ocean, getting broader and slower as they head towards it.
+        River deltas and estuaries form at the interface between rivers and oceans, and provide
+        unique brackish water ecosystems. Fish like salmon live in pretty much every ecosystem
+        along a river's path during their life cycle. Dams and changes in rainfall
+        can stop rivers from reaching the ocean, or cause their water levels to drop drastically.
+    - name: Groundwater discharge to ocean
+      amount: 4.5
+      variance: 70.0
+      sources:
+        - Renewable groundwater
+        - Non-renewable groundwater
+      destinations:
+        - Surface ocean
+      description: |
+        Groundwater, which flows underground much like rivers flow on the surface, can also make
+        its way to the ocean. This flux of water is one of the least well-understood, due to the
+        difficulty in measurements and the absolutely immense size of the interface between the
+        continental surfaces and the Earth's oceans.
+    - name: Land precipitation
+      amount: 110.0
+      variance: 10.0
+      sources:
+        - Atmosphere over land
+      destinations:
+        - Snowpack
+        - Rivers
+        - Fresh lakes
+        - Wetlands
+        - Soil moisture
+        - Saline lakes
+        - Reservoirs
+      description: |
+        Precipitation over the land's surface accounts for about a quarter of all
+        precipitation that falls on Earth. Precipitation can take the form of rain,
+        sleet, snow, or hail, primarily. Rainfall provides water for rivers, lakes,
+        the soil, and people that capture it for later use. Precipitation is determined
+        by the topology of the Earth's surface: tall mountains can impede the flow of
+        moisture-laden air from the ocean to the land, creating deserts.
+    - name: Green water use
+      amount: 19.0
+      variance: 20.0
+      sources:
+        - Soil moisture
+      destinations:
+        - Biological water
+      description: |
+        Green water use refers to the water that plants and crops take up out of the soil.
+        Green water refers to water that has fallen from rain or entered the soil
+        via other natural means, while blue water refers to water used for irrigation.
+    - name: Land evapotranspiration
+      amount: 69.0
+      variance: 10.0
+      sources:
+        - Rivers
+        - Fresh lakes
+        - Saline lakes
+        - Wetlands
+        - Biological water
+        - Reservoirs
+      destinations:
+        - Atmosphere over land
+      description: |
+        Evapotranspiration is the name given to the combined process by which
+        water moves from the Earth's surface to the atmosphere. It is the combination
+        of evaporation, where liquid water on the Earth's surface becomes water vapor,
+        and transpiration, where living plants "exhale" water into the air.
+    - name: Groundwater recharge
+      amount: 13.0
+      variance: 50.0
+      sources:
+        - Soil moisture
+      destinations:
+        - Renewable groundwater
+      description: |
+        Groundwater can be recharged as water percolates from top-level soils
+        deeper into the soils, sands, and rock below. In doing so, the water is
+        filtered, becoming very clean and drinkable, barring external pollution
+        and bacteria.
+    - name: Blue water use
+      amount: 4.0
+      variance: 30
+      sources:
+        - Renewable groundwater
+        - Non-renewable groundwater
+        - Rivers
+        - Fresh lakes
+      destinations:
+        - Reservoirs
+        - Biological water
+      description: |
+        Blue water use is the name given to water used by humans that comes from
+        surface water like lakes and rivers, or from aquifers (groundwater). This
+        water usage is often characterized by irrigation for crop production, or
+        providing drinking water.
