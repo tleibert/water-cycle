@@ -154,8 +154,10 @@ world:
     - name: Ocean evaporation
       amount: 420.0
       variance: 20.0
-      source: Surface ocean
-      destination: Atmosphere over ocean
+      sources:
+        - Surface ocean
+      destinations:
+        - Atmosphere over ocean
       description: |
         Oceanic evaporation occurs when water changes phase from liquid to
         water vapor at the ocean's surface. This change is primarily driven
@@ -165,28 +167,28 @@ world:
     - name: Ocean precipitation
       amount: 380.0
       variance: 20.0
-      source: Atmosphere over ocean
-      destination: Surface ocean
+      sources:
+        - Atmosphere over ocean
+      destinations:
+        - Surface ocean
       description: |
         Most of the precipitation that falls on Earth falls over the ocean.
         Ocean precipitation accounts for over three quarters of all precipitation
         on earth. Precipitation plays a role in determining the salinity, or saltiness,
         of the ocean's surface.
     - name: Vertical ocean circulation
-      amount: &vertical_circulation_amount 2100.0
-      variance: &vertical_circulation_variance 30.0
-      source: Surface ocean
-      destination: Deep ocean
-      description: &vertical_circulation_description |
+      amount: 2100.0
+      variance: 30.0
+      sources:
+        - Surface ocean
+        - Deep ocean
+      destinations:
+        - Surface ocean
+        - Deep ocean
+      description: |
         The flow of water between the ocean's surface to its deeper reaches is called
         vertical ocean circulation. Vertical circulation is primarily driven by
         differences in water density, caused by differences in temperature and salinity.
         Denser water will sink, while less dense water will rise. Vertical ocean circulation
         is part of the global system of thermohaline circulation - sometimes called the ocean
         conveyor belt.
-    - name: Vertical ocean circulation
-      amount: *vertical_circulation_amount
-      variance: *vertical_circulation_variance
-      source: Deep ocean
-      destination: Surface ocean
-      description: *vertical_circulation_description

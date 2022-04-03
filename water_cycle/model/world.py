@@ -33,23 +33,37 @@ class World:
             for location in data["world"]["locations"]
         }
 
-        # generate fluxes, and attach locations to them
+        # generate fluxes, and attach locations to them - each flux contains a list
+        # of sources and destinations, we need to make a Flux object for each
+        # unique combination of source and destination, where the two are not the same.
         fluxes = []
-        for flux in data["world"]["fluxes"]:
+        for flux_src in data["world"]["fluxes"]:
             # grab the location objects corresponding to
-            source = locations[flux["source"]]
-            destination = locations[flux["destination"]]
+            sources = flux_src["sources"]
+            destinations = flux_src["destinations"]
 
-            # create the Flux object
-            flux["source"] = source
-            flux["destination"] = destination
-            new_flux = Flux(**flux)
+            for source_str in sources:
+                for destination_str in destinations:
+                    # no flows should go from a place to itself
+                    if source_str == destination_str:
+                        continue
 
-            # add the new Flux object to the source location's outflow list
-            # and to the destination location's inflow list
-            source.add_outflow(new_flux)
-            destination.add_inflow(new_flux)
-            fluxes.append(new_flux)
+                    source = locations[source_str]
+                    destination = locations[destination_str]
+
+                    flux = {}
+                    for key in ["name", "amount", "variance", "description"]:
+                        flux[key] = flux_src[key]
+                    # create the Flux object
+                    flux["source"] = source
+                    flux["destination"] = destination
+                    new_flux = Flux(**flux)
+
+                    # add the new Flux object to the source location's outflow list
+                    # and to the destination location's inflow list
+                    source.add_outflow(new_flux)
+                    destination.add_inflow(new_flux)
+                    fluxes.append(new_flux)
 
         return cls(list(locations.values()), fluxes)
 
