@@ -31,8 +31,124 @@ world:
         the ocean help to regulate the temperature on the Earth's surface.
         The deep ocean is generally colder, darker, and less salty than
         surface waters. Because of the salinity and temperature gradient, 
-        surface and deep waters don't mix very much relative to the amount
-        of water present in both regions.
+        surface and deep waters tend to stratify, or separate into layers.
+    - name: Ice sheets and glaciers
+      amount: 26000.0
+      variance: 10.0
+      description: |
+        Most of the earth's fresh water (only about 3% of all water) is present in
+        ice sheets and glaciers. They play an important role in the global climate,
+        by reflecting the sun's energy back into space instead of absorbing it.
+        Melting glaciers and ice sheets release fresh water, either into the ocean
+        or into rivers and streams, depending on their location.
+    - name: Snowpack
+      amount: 2.7
+      variance: 20.0
+      description: |
+        Snowpack forms as snow falls and accumulates in regions and elevations where
+        the temperature is cold for extended periods of the year. Snowpacks are a very
+        important water resource, as they steadily release fresh water into rivers and
+        streams as they melt, providing drinking water and water for agriculture. For
+        example, the rivers that feed California's central valley are fed by the snowpack
+        that accumulates in the adjacent mountains, like the Sierra Nevada. As the
+        climate warms up in these colder regions, less snowpack will accumulate, meaning
+        less fresh water will be available later in the year.
+    - name: Permafrost
+      amount: 210.0
+      variance: 100.0
+      description: |
+        Permafrost is ground that remains frozen year-round. It is primarily found in northern
+        latitudes, being widespread in the arctic regions of Canada, Alaska, and Siberia, to name
+        a few places. The permafrost in this region covers up thousands of years' worth of 
+        deceased organisms, comprising a massive store of carbon-containing compounds. As the
+        permafrost melts, these greenhouse gases, like methane, are released into the atmosphere.
+    - name: Atmosphere over land
+      amount: 3.0
+      variance: 10.0
+      description: |
+        Water in the atmosphere over the Earth's land primarily comes from ocean evaporation.
+        The circulation of moisture-laden air from the ocean to land is one of the main
+        contributing factors to the Earth's weather patterns. Chances are, whenever rain
+        falls in your area, that water started its trip from the ocean's surface.
+    - name: Fresh lakes
+      amount: 110.0
+      variance: 20.0
+      description: |
+        Rain and snowmelt feed streams and rivers, which can accumulate into freshwater lakes.
+        Freshwater lakes are an important resource for humans, plants, and animals alike.
+        Natural lakes provide important habitat, drinking water, and recreation. They also
+        serve to moderate large rainfalls and control flooding.
+    - name: Reservoirs
+      amount: 11.0
+      variance: 40.0
+      description: |
+        Reservoirs are essentially man-made lakes. They're primarily constructed to store
+        water for human use, provide power via hydroelectric dams, and control rainwater.
+        They can also provide similar recreation and habitat to naturally occurring lakes.
+    - name: Rivers
+      amount: 1.9
+      variance: 20.0
+      description: |
+        Rivers are formed as precipitation in a given watershed collects into a series
+        of streams. Streams eventually combine to form larger and larger flows, including
+        rivers. Rivers provide important habitat for animals and plants, water for human use,
+        and are useful for transportation as well. Rivers eventually terminate by flowing
+        into the ocean.
+    - name: Wetlands
+      amount: 14.0
+      variance: 20.0
+      description: |
+        Wetlands are broadly described as areas where water covers or is present near the
+        surface of the soil. Included in this definition are marshes, bogs, swamps, mires,
+        and many more types of ecosystems. Wetlands serve to filter water, control storm surge,
+        and provide unique habitat to a variety of different waterbirds, fish, reptiles, amphibians,
+        and mammals.
+    - name: Biological water
+      amount: 0.94
+      variance: 30.0
+      description: |
+        Biological water is the water that is present in all living things. For example,
+        you, the reader, are composed of around 70% water. Water is essential for biological
+        processes, and is taken in and released by all lifeforms all the time. You drink water
+        emit water as waste, and breathe water out of your lungs. Trees take in water for
+        their biological processes, and release it in a process known as transpiration.
+    - name: Saline lakes
+      amount: 95.0
+      variance: 10.0
+      description: |
+        Saline lakes, as their name would suggest, are saltwater lakes on the Earth's land
+        surface. Saline lakes and their associated wetlands, while not immediately useful
+        to people for drinking water and agriculture, serve as important habitat for migratory
+        birds, and serve much of the other uses as freshwater lakes. Notably, most saline lakes
+        do not have rivers that flow out of them to the ocean, causing salty minerals to accumulate
+        in them as water evaporates out.
+    - name: Soil moisture
+      amount: 54.0
+      variance: 90.0
+      description: |
+        Soil moisture is the primary source of water for plants, which uptake the water
+        through their roots. The moisture content of soil, as well as its permeability,
+        or ability to let water in, affect the amount of rainfall that will be absorbed
+        by the soil instead of running off. Impermeable soils have high amounts of runoff,
+        and can contribute to flooding. Because soil moisture is so important for plants,
+        people often raise it artificially via irrigation in order to grow crops.
+    - name: Renewable groundwater
+      amount: 630.0
+      variance: 70.0
+      description: &groundwater_description |
+        Groundwater is water found underground in the soil, sand, and rock. It accounts for
+        around 30% of the Earth's freshwater. People use groundwater for drinking and agriculture
+        in many regions, drawing it from aquifers with wells and pumps. If you drink well water,
+        you are drinking groundwater. Groundwater is often some of the purest and cleanest water
+        available, if it hasn't been disturbed by other human activities. Groundwater is re-filled
+        via groundwater recharge, as water that has infiltrated into the soil percolates deeper.
+        Not all groundwater can be recharged, and the rate of recharge is often slower than the
+        rate at which it is consumed. Groundwater that is recharging far slower than the rate that
+        it is used is considered non-renewable.
+    - name: Non-renewable groundwater
+      amount: 22000.0
+      variance: 80.0
+      description: *groundwater_description
 
   fluxes:
     - name: Ocean evaporation
@@ -54,22 +170,23 @@ world:
       description: |
         Most of the precipitation that falls on Earth falls over the ocean.
         Ocean precipitation accounts for over three quarters of all precipitation
-        on earth.
-      # TODO write more
+        on earth. Precipitation plays a role in determining the salinity, or saltiness,
+        of the ocean's surface.
     - name: Vertical ocean circulation
-      amount: 2100.0
-      variance: 30.0
+      amount: &vertical_circulation_amount 2100.0
+      variance: &vertical_circulation_variance 30.0
       source: Surface ocean
       destination: Deep ocean
-      description: |
-        The flow of water from the ocean's surface to its deeper reaches is called
-        vertical ocean circulation.
-      # TODO write more
+      description: &vertical_circulation_description |
+        The flow of water between the ocean's surface to its deeper reaches is called
+        vertical ocean circulation. Vertical circulation is primarily driven by
+        differences in water density, caused by differences in temperature and salinity.
+        Denser water will sink, while less dense water will rise. Vertical ocean circulation
+        is part of the global system of thermohaline circulation - sometimes called the ocean
+        conveyor belt.
     - name: Vertical ocean circulation
-      amount: 2100.0
-      variance: 30.0
+      amount: *vertical_circulation_amount
+      variance: *vertical_circulation_variance
       source: Deep ocean
       destination: Surface ocean
-      description: |
-        The flow of water from the ocean's surface to its deeper reaches is called
-        vertical ocean circulation.
+      description: *vertical_circulation_description
