@@ -330,3 +330,19 @@ world:
         surface water like lakes and rivers, or from aquifers (groundwater). This
         water usage is often characterized by irrigation for crop production, or
         providing drinking water.
+    - name: River outflows
+      sources:
+        - Rivers
+      destinations:
+        - Fresh lakes
+        - Wetlands
+        - Saline lakes
+        - Reservoirs
+    - name: Discharge to river
+      sources:
+        - Fresh lakes
+        - Wetlands
+        - Reservoirs
+        - Snowpack
+      destinations:
+        - Rivers

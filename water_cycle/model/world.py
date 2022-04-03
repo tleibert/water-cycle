@@ -55,7 +55,7 @@ class World:
 
                     flux = {}
                     for key in ["name", "amount", "variance", "description"]:
-                        flux[key] = flux_src[key]
+                        flux[key] = flux_src.get(key)
                     # create the Flux object
                     flux["source"] = source
                     flux["destination"] = destination

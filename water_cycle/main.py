@@ -27,6 +27,8 @@ def main():
     print(world)
     start = world.random_location()
     print(f"You are starting in: {start.name}")
+    print("You have the following fluxes available:")
+    print(f"{start.outflows}")
     input()
     print("Goodbye!")
 

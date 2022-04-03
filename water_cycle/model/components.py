@@ -5,7 +5,7 @@ and Fluxes, which are transitions of water between Locations.
 """
 
 from abc import ABC, abstractmethod
-from typing import List, Sequence, Tuple
+from typing import List, Optional, Sequence
 
 
 class Component(ABC):
@@ -14,7 +14,13 @@ class Component(ABC):
     """
 
     @abstractmethod
-    def __init__(self, name: str, description: str, amount: float, variance: float):
+    def __init__(
+        self,
+        name: str,
+        description: str = "No long-form description available.\n",
+        amount: Optional[float] = None,
+        variance: Optional[float] = None,
+    ):
         self._name = name
         self._description = description
         self._amount = amount
@@ -35,12 +41,15 @@ class Component(ABC):
         return self._description
 
     @property
-    def info(self) -> Tuple[float, float]:
+    def info(self) -> Optional[str]:
         """
-        Returns the (amount, variance) pair describing
+        Returns the amount +- variance pair describing
         this component's water content.
         """
-        return self._amount, self._variance
+        if self._amount is None or self._variance is None:
+            return None
+
+        return f"{self._amount} ± {self._variance}%"
 
     @abstractmethod
     def __repr__(self) -> str:
@@ -57,13 +66,13 @@ class Flux(Component):
     def __init__(  # pylint: disable=too-many-arguments
         self,
         name: str,
-        description: str,
-        amount: float,
-        variance: float,
         source: "Location",
         destination: "Location",
+        description: str = "No long-form description available.\n",
+        amount: Optional[float] = None,
+        variance: Optional[float] = None,
     ):
-        super().__init__(name, description, amount, variance)
+        super().__init__(name, description, amount=amount, variance=variance)
         self._source = source
         self._destination = destination
 
@@ -94,9 +103,9 @@ class Location(Component):
     def __init__(
         self,
         name: str,
-        description: str,
-        amount: float,
-        variance: float,
+        description: str = "No long-form description available.\n",
+        amount: Optional[float] = None,
+        variance: Optional[float] = None,
     ):
         """
         Creates a new Location
