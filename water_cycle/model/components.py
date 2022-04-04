@@ -17,7 +17,7 @@ class Component(ABC):
     def __init__(
         self,
         name: str,
-        description: str = "No long-form description available.\n",
+        description: Optional[str] = None,
         amount: Optional[float] = None,
         variance: Optional[float] = None,
     ):
@@ -38,7 +38,7 @@ class Component(ABC):
         """
         Returns the long-form description of this part of the water cycle
         """
-        return self._description
+        return self._description or "No long-form description available.\n"
 
     @property
     def info(self) -> Optional[str]:
@@ -68,7 +68,7 @@ class Flux(Component):
         name: str,
         source: "Location",
         destination: "Location",
-        description: str = "No long-form description available.\n",
+        description: Optional[str] = None,
         amount: Optional[float] = None,
         variance: Optional[float] = None,
     ):
@@ -103,7 +103,7 @@ class Location(Component):
     def __init__(
         self,
         name: str,
-        description: str = "No long-form description available.\n",
+        description: Optional[str] = None,
         amount: Optional[float] = None,
         variance: Optional[float] = None,
     ):
