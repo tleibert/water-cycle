@@ -236,7 +236,7 @@ world:
       destinations:
         - Surface ocean
       description: |
-        Most rivers terminate at the ocean, getting broader and slower as they head towards it.
+        Most rivers usually terminate at the ocean, getting broader and slower as they head towards it.
         River deltas and estuaries form at the interface between rivers and oceans, and provide
         unique brackish water ecosystems. Fish like salmon live in pretty much every ecosystem
         along a river's path during their life cycle. Dams and changes in rainfall
@@ -344,5 +344,6 @@ world:
         - Wetlands
         - Reservoirs
         - Snowpack
+        - Permafrost
       destinations:
         - Rivers

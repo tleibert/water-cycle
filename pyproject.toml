@@ -5,9 +5,10 @@ description = ""
 authors = ["tmleibe2 <tmleibe2@ncsu.edu>"]
 
 [tool.poetry.dependencies]
-python = ">=3.10,<3.11"
+python = ">=3.8,<3.11"
 PyYAML = "^6.0"
-prompt-toolkit = "^3.0.28"
+PyInquirer = "^1.0.3"
+rich = "^12.1.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
