@@ -22,7 +22,7 @@ def ask_flux_action():
         "type": "list",
         "name": "action",
         "message": "What would you like to do?",
-        "choices": ["view description", "continue", "quit"],
+        "choices": ["continue to next stage", "view description", "quit"],
     }
     answers = prompt(flux_prompt)
     return answers["action"]
@@ -40,7 +40,7 @@ def handle_flux(flux: Flux) -> Location:
 
         if action == "view description":
             view_description(flux)
-        elif action == "continue":
+        elif action == "continue to next stage":
             return flux.destination
         elif action == "quit":
             console.print("Goodbye!")
@@ -62,7 +62,7 @@ def ask_next_action():
         "type": "list",
         "name": "action",
         "message": "What would you like to do?",
-        "choices": ["view description", "choose outflow", "quit"],
+        "choices": ["choose outflow", "view description", "quit"],
     }
     answers = prompt(action_prompt)
     return answers["action"]
@@ -88,7 +88,7 @@ def view_description(component: Component):
 
 def choose_outflow(location: Location) -> Flux:
     fluxes = location.outflows
-    flux_name_map = {flux.name: flux for flux in fluxes}
+    flux_name_map = {str(flux): flux for flux in fluxes}
 
     flux_prompt = {
         "type": "list",
@@ -130,7 +130,8 @@ def start_interactive(world: World):
     Runs the interactive loop of the simulation.
     """
 
-    location = world.random_location()
+    # location = world.random_location()
+    location = world.get_location_by_name("Surface ocean")
 
     while True:
         new_location = sim_step(world, location)

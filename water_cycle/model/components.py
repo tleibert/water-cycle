@@ -91,7 +91,7 @@ class Flux(Component):
         return self._destination
 
     def __repr__(self) -> str:
-        return f"Flux({self._name}: {self._source.name} -> {self._destination.name})"
+        return f"{self._name}: {self._source.name} -> {self._destination.name}"
 
 
 class Location(Component):

@@ -3,7 +3,7 @@ Represents the World that contains the water cycle.
 """
 
 import random
-from typing import List
+from typing import List, Mapping, Optional
 
 import yaml
 
@@ -15,9 +15,15 @@ class World:
     Represents the world that the water cycle is in.
     """
 
-    def __init__(self, locations: List[Location], fluxes: List[Flux]):
+    def __init__(
+        self,
+        locations: List[Location],
+        fluxes: List[Flux],
+        location_name_map: Mapping[str, Location],
+    ):
         self._locations = locations
         self._fluxes = fluxes
+        self._location_name_map = location_name_map
 
     @classmethod
     def _from_config(cls, filename: str) -> "World":
@@ -67,7 +73,7 @@ class World:
                     destination.add_inflow(new_flux)
                     fluxes.append(new_flux)
 
-        return cls(list(locations.values()), fluxes)
+        return cls(list(locations.values()), fluxes, locations)
 
     @classmethod
     def from_config(cls, filename: str) -> "World":
@@ -90,6 +96,13 @@ class World:
         """
 
         return random.choice(self._locations)
+
+    def get_location_by_name(self, name: str) -> Optional[Location]:
+        """
+        Returns the location with the given name from the world.
+        """
+
+        return self._location_name_map.get(name)
 
     def __repr__(self) -> str:
         return "World(\n" + "    \n".join(repr(flux) for flux in self._fluxes) + "\n)"
